@@ -1,0 +1,21 @@
+# Recorded data — keep code versioned, not bulky data files
+imu_*.csv
+*.csv
+*.bag
+*.db3
+*.mcap
+rosbag2_*/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
