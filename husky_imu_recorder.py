@@ -21,6 +21,7 @@ Verify the IMU topic first:
 """
 
 import csv
+import os
 import time
 import argparse
 from datetime import datetime
@@ -75,8 +76,11 @@ class ImuRecorder(Node):
         if not self.csv_file.closed:
             self.csv_file.flush()
             self.csv_file.close()
-        self.get_logger().info(
-            f"Saved {self.n_samples} IMU samples to {self.output}")
+        # print() rather than the ROS logger: by the time cleanup runs after
+        # Ctrl+C, the ROS context may already be shutting down, which makes a
+        # logger call fail with a harmless "context is invalid" warning.
+        print(f"Saved {self.n_samples} IMU samples to "
+              f"{os.path.abspath(self.output)}")
 
 
 def main():
